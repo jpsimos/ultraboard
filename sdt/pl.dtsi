@@ -1,0 +1,72 @@
+/ {
+	amba_pl: amba_pl {
+		ranges;
+		compatible = "simple-bus";
+		#address-cells = <2>;
+		#size-cells = <2>;
+		firmware-name = "ultraboard_design_wrapper.bit.bin";
+		afi0: afi0 {
+			status = "okay";
+			compatible = "xlnx,afi-fpga";
+			resets = <&zynqmp_reset 116>, <&zynqmp_reset 117>, <&zynqmp_reset 118>, <&zynqmp_reset 119>;
+			config-afi = < 0 0>, <1 0>, <2 0>, <3 0>, <4 0>, <5 0>, <6 0>, <7 0>, <8 0>, <9 0>, <10 0>, <11 0>, <12 0>, <13 0>, <14 0xa00>, <15 0x000>;
+		};
+		rs485_axi_uart16550_0: serial@80050000 {
+			interrupts = < 0 90 4 >;
+			compatible = "xlnx,axi-uart16550-2.0";
+			xlnx,external-xin-clk-hz = <25000000>;
+			xlnx,has-external-rclk = <0>;
+			xlnx,s-axi-aclk-freq-hz-d = <0x5f5dd19>;
+			interrupt-parent = <&imux>;
+			xlnx,rable = <0>;
+			xlnx,use-user-ports = <1>;
+			xlnx,sim-device = "VERSAL_AI_CORE_ES1";
+			xlnx,uart-board-interface = "Custom";
+			xlnx,ip-name = "axi_uart16550";
+			reg = <0x0 0x80050000 0x0 0x10000>;
+			xlnx,has-external-xin = <0>;
+			clocks = <&zynqmp_clk 71>;
+			xlnx,use-modem-ports = <1>;
+			xlnx,edk-iptype = "PERIPHERAL";
+			status = "okay";
+			xlnx,external-xin-clk-hz-d = <25>;
+			xlnx,clock-freq = <99999001>;
+			clock-names = "s_axi_aclk";
+			xlnx,base-user = <1>;
+			interrupt-names = "ip2intc_irpt";
+			xlnx,is-a-16550 = <1>;
+			xlnx,name = "rs485_axi_uart16550_0";
+		};
+		rs485_axi_uart16550_1: serial@80060000 {
+			interrupts = < 0 89 4 >;
+			compatible = "xlnx,axi-uart16550-2.0";
+			xlnx,external-xin-clk-hz = <25000000>;
+			xlnx,has-external-rclk = <0>;
+			xlnx,s-axi-aclk-freq-hz-d = <0x5f5dd19>;
+			interrupt-parent = <&imux>;
+			xlnx,rable = <0>;
+			xlnx,use-user-ports = <1>;
+			xlnx,sim-device = "VERSAL_AI_CORE_ES1";
+			xlnx,uart-board-interface = "Custom";
+			xlnx,ip-name = "axi_uart16550";
+			reg = <0x0 0x80060000 0x0 0x10000>;
+			xlnx,has-external-xin = <0>;
+			clocks = <&zynqmp_clk 71>;
+			xlnx,use-modem-ports = <1>;
+			xlnx,edk-iptype = "PERIPHERAL";
+			status = "okay";
+			xlnx,external-xin-clk-hz-d = <25>;
+			xlnx,clock-freq = <99999001>;
+			clock-names = "s_axi_aclk";
+			xlnx,base-user = <1>;
+			interrupt-names = "ip2intc_irpt";
+			xlnx,is-a-16550 = <1>;
+			xlnx,name = "rs485_axi_uart16550_1";
+		};
+		zyxclmm_drm {
+			interrupts = <0x0 0x89 0x4>, <0x0 0x90 0x4>, <0x0 0x91 0x4>, <0x0 0x92 0x4>, <0x0 0x93 0x4>, <0x0 0x94 0x4>, <0x0 0x95 0x4>, <0x0 0x96 0x4>;
+			interrupt-parent = <&imux>;
+			compatible = "xlnx,zocl";
+		};
+	};
+};
